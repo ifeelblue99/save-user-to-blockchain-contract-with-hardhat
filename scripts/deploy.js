@@ -2,9 +2,9 @@ const hre = require("hardhat");
 
 async function main() {
   const UserDB = await hre.ethers.getContractFactory("UserDB");
-  const serDB = await UserDB.deploy();
+  const userDB = await UserDB.deploy();
 
-  await greeter.deployed();
+  await userDB.deployed();
 
   console.log("UserDB deployed to:", userDB.address);
 }
