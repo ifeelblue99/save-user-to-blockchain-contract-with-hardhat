@@ -9,9 +9,7 @@ contract UserDB {
         int256 dateOfBirth;
         string color;
         string says;
-        string topic1;
-        string topic2;
-        string topic3;
+        string[3] topics;
     }
     User[] public users;
     error Max7UsersCanBeSaved();
@@ -26,9 +24,7 @@ contract UserDB {
                 -1466671836000,
                 "blue",
                 "I will hide you, believe me. In what I write, in what I draw. In what I sing, in what I say.",
-                "poems",
-                "literature",
-                "instabook"
+                ["poems","literature","instabook"]
             )
         );
     }
@@ -39,9 +35,7 @@ contract UserDB {
         int256 date_of_birth,
         string memory _color,
         string memory _says,
-        string memory topic_1,
-        string memory topic_2,
-        string memory topic_3
+        string[3] memory _topics
     ) external {
         if (users.length > 7) {
             revert Max7UsersCanBeSaved();
@@ -55,9 +49,7 @@ contract UserDB {
                 date_of_birth,
                 _color,
                 _says,
-                topic_1,
-                topic_2,
-                topic_3
+                _topics
             )
         );
         emit NewUserSaved(user_id);
